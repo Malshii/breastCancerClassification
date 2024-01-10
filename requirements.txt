@@ -1,6 +1,6 @@
 numpy
 opencv-python-headless
-Pillow
+Pillow==9.5.0
 tensorflow
 streamlit
 keras
