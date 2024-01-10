@@ -32,7 +32,7 @@ def resize_image_for_display(image, max_display_size=(300, 300)):
         new_height = min(image.height, max_display_size[1])
         new_width = int(new_height * aspect_ratio)
         
-    return image.resize((new_width, new_height), Image.ANTIALIAS)
+    return image.resize((new_width, new_height), Image.LANCZOS)
 
 # ---------------------U-Net Segmentation---------------------
 
@@ -213,6 +213,6 @@ def display_gradcam(uploaded_file, heatmap, alpha=0.4, display_size=(300, 300)):
     superimposed_img_pil = Image.fromarray(superimposed_img)
     
     # Resize the image for display
-    resized_image = superimposed_img_pil.resize(display_size, Image.ANTIALIAS)
+    resized_image = superimposed_img_pil.resize(display_size, Image.LANCZOS)
 
     return resized_image
