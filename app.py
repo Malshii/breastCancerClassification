@@ -3,9 +3,7 @@ import streamlit as st
 from PIL import Image
 from utils import (resize_image_for_display, apply_lesion_on_white_background,
                    apply_black_lesion_on_white_background, load_and_prep_image_segmentation,
-                   preprocess_for_subtype, predict_subtype, resize_mask_for_display,
-                   load_preprocess_image_classification, subtype_full_names,
-                   get_img_array, make_gradcam_heatmap, display_gradcam)
+                   predict_subtype, load_preprocess_image_classification, get_img_array, make_gradcam_heatmap, display_gradcam)
 from models import (load_segmentation_model, load_subtype_model, 
                     load_classification_model, predict_with_model)
 import numpy as np
