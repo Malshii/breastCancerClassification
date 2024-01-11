@@ -21,10 +21,10 @@ classes = ['Benign', 'Malignant', 'Normal']
 img_size = (256, 256) 
 
 # Streamlit application layout
-st.title('Breast Cancer Analysis Tool')
+st.title('Breast Guard: Image-Powered Breast Cancer Analysis')
 
 # File uploader
-uploaded_file = st.file_uploader("Choose an image...", type=["jpg", "png"])
+uploaded_file = st.file_uploader("Upload Ultrasound Images", type=["jpg", "png"])
 if uploaded_file is not None:
     image = Image.open(uploaded_file).convert('RGB')
     
@@ -39,14 +39,14 @@ if uploaded_file is not None:
     prediction = predict_with_model(classification_model, processed_image_classification)
     predicted_class_index = np.argmax(prediction, axis=1)[0]  # Extract the first element
     predicted_class_name = classes[predicted_class_index]
-    st.write(f'Classification Prediction: {predicted_class_name}')
+    st.write(f'Classification: {predicted_class_name}')
 
     # ---------------------Subtype prediction, Grad CAM and segmentation---------------------
     is_malignant = predicted_class_name == 'Malignant'
     if predicted_class_name in ['Malignant', 'Benign']:
         # ---------------------Diagnosis classification---------------------
         subtype_full_name = predict_subtype(subtype_model, image, is_malignant)
-        st.write(f'Diagnosis Prediction: {subtype_full_name}')
+        st.write(f'Diagnosis: {subtype_full_name}')
     
         # ---------------------Applying Grad CAM---------------------
         # Preprocess the image for Grad-CAM
